@@ -2,3 +2,8 @@
   - [ ] Mandar invitacion a Google Calendar
   - [ ] Agregar logos/diseno
   - [ ] Eliminar evento
+
+# Fixes
+ - [ ] The CSS bootstrap seems to be missing.
+ - [ ] There are no category options in add_event_form
+

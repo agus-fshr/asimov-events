@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS events (
 ''')
 
 # Insert initial categories
-categories = [("Alpha",), ("Beta",), ("Gamma",), ("Delta",)]
+categories = [("Velocistas",), ("Sumo",), ("Mini Sumo",), ("Futbol",)]
 c.executemany('INSERT INTO categories (name) VALUES (?)', categories)
 
 # Commit the changes and close the connection

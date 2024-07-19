@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/nomad1c/Documents/IEEE/ras-gpt/.venv"
+set -gx VIRTUAL_ENV "/home/nomad1c/ras/asimov-events/.venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
