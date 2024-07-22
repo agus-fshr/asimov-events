@@ -47,14 +47,15 @@
                 const categorySelect = document.getElementById('category_id');
                 data.categories.forEach(category => {
                     const option = document.createElement('option');
-                    option.value = category.id;  // Use the id as the value
-                    option.textContent = category.name;  // Use the name as the text
+                    option.value = category[0];  // Use the first element of the array as the value (ID)
+                    option.textContent = category[1];  // Use the second element of the array as the text (Name)
                     categorySelect.appendChild(option);
                 });
             })
             .catch(error => {
                 console.error('Error fetching categories:', error);
             });
+
 
         // Handle form submission
         document.getElementById('addEventForm').addEventListener('submit', function(event) {

@@ -62,13 +62,22 @@ def add_event():
         }
 
         # Emit the event to all connected clients
-        socketio.emit('new_event', event, broadcast=True)
+        socketio.emit('new_event', event)
 
         return jsonify({"status": "Event added"}), 201
 
     except Exception as e:
         print(f"Error: {e}")  # Debugging line
         return jsonify({"error": str(e)}), 400
+    
+@socketio.on('connect')
+def handle_connect():
+    print('Client connected')
+
+@socketio.on('new_event')
+def handle_new_event(data):
+    print(f"Received new event: {data}")
+    emit('new_event', data)
 
 @app.route('/events', methods=['GET'])
 def get_events():
@@ -127,7 +136,7 @@ def delete_event(event_id):
         conn.close()
 
         # Emit the event deletion to all connected clients
-        socketio.emit('delete_event', {'id': event_id}, broadcast=True)
+        socketio.emit('delete_event', {'id': event_id})
 
         return jsonify({"status": "Event deleted"}), 200
     except Exception as e:
