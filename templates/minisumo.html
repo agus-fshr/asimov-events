@@ -3,18 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asimov Competition Events</### Update `index.html`
-
-Ensure `index.html` correctly handles the `new_event` socket event and updates the page in real-time. Here is the updated `index.html`:
-
-**`index.html`**
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asimov Competition Events</title>
+    <title>Velocistas Events</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
     <style>
@@ -34,7 +23,7 @@ Ensure `index.html` correctly handles the `new_event` socket event and updates t
 </head>
 <body>
     <div class="container">
-        <h1 class="my-4">Eventos</h1>
+        <h1 class="my-4">Eventos Velocistas</h1>
         <div id="events" class="list-group"></div>
     </div>
 
@@ -57,6 +46,7 @@ Ensure `index.html` correctly handles the `new_event` socket event and updates t
         }
 
         function addEventToPage(event) {
+            if (event.category_name.toLowerCase() !== 'mini sumo') return;
             const eventDiv = document.createElement('div');
             eventDiv.className = 'list-group-item ' + getCategoryClass(event.category_name);
             eventDiv.id = `event-${event.id}`;
@@ -78,6 +68,7 @@ Ensure `index.html` correctly handles the `new_event` socket event and updates t
         }
 
         function insertEventSorted(event) {
+            if (event.category_name.toLowerCase() !== 'velocistas') return;  // Filter for velocistas
             // Insert the event into the sorted position
             events.push(event);
             events.sort((a, b) => new Date(b.start_time) - new Date(a.start_time));

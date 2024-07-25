@@ -6,7 +6,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
 
-PASSWORD = 'your_password'  # Replace with your desired password
+PASSWORD = 'fernandocasas'
 
 def connect_db():
     return sqlite3.connect('events.db')
@@ -163,6 +163,26 @@ def login():
             return render_template('login.html', error='Invalid password')
     
     return render_template('login.html')
+
+@app.route('/velocistas')
+def velocistas():
+    return render_template('velocistas.html')
+
+@app.route('/sumo')
+def sumo():
+    return render_template('sumo.html')
+
+@app.route('/minisumo')
+def minisumo():
+    return render_template('minisumo.html')
+
+@app.route('/futbol')
+def futbol():
+    return render_template('futbol.html')
+
+@app.route('/links')
+def links():
+    return render_template('links.html')
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
